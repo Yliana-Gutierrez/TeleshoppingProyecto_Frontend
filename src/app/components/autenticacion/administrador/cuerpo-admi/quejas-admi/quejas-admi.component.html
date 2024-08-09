@@ -1,0 +1,72 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+
+
+<app-cabecera-admi></app-cabecera-admi>
+
+
+<div class="container mt-5">
+  <h1 class="my-4 text-center custom-header">Quejas Realizadas</h1>
+  <br>
+  <div class="input-group mb-3 custom-search">
+      <input type="text" class="form-control" placeholder="Buscar por Nombre del Cliente..." (input)="applyFilter($event)">
+      <input type="text" class="form-control" placeholder="Buscar por Correo Electrónico..." (input)="applyFilter($event)">
+      <input type="text" class="form-control" placeholder="Buscar por Fecha..." (input)="applyFilter($event)">
+      <button class="btn btn-outline-secondary" type="button" (click)="limpiarFiltro()">
+          <i class="bi bi-x"></i>
+      </button>
+  </div>
+  <div class="table-responsive">
+      <table class="table table-striped custom-table">
+          <thead class="thead-dark">
+              <tr>
+                  <th>Nombre del Cliente</th>
+                  <th>Correo Electrónico</th>
+                  <th>Queja</th>
+                  <th>Fecha</th>
+                  <th>Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let queja of paginatedQuejas">
+                  <td>{{ queja.nombreCliente }}</td>
+                  <td>{{ queja.email }}</td>
+                  <td>{{ queja.queja }}</td>
+                  <td>{{ queja.fecha | date }}</td>
+                  <td>
+                      <button class="btn btn-info mr-2" (click)="actualizarEstado(queja, 'En Proceso')">En Proceso</button>
+                      <button class="btn btn-success mr-2" (click)="actualizarEstado(queja, 'Resuelta')">Resuelta</button>
+                      <button class="btn btn-danger" (click)="actualizarEstado(queja, 'Rechazada')">Rechazar</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <nav aria-label="Page navigation" class="custom-pagination">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="previousPage()" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+          <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="nextPage()" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+</div>
+
+
+
+<br><br><br><br><br><br><br><br><br>
+<app-pie-admi></app-pie-admi>
+
+
+
+
+

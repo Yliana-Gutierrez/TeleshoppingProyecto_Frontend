@@ -1,0 +1,15 @@
+span[title="Ver"] {
+    cursor: pointer;
+}
+
+span[title="Editar"] {
+    cursor: pointer;
+}
+
+span[title="Eliminar"] {
+    cursor: pointer;
+}
+
+.pagination .page-link {
+    cursor: pointer;
+}

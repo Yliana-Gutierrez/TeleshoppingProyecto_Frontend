@@ -1,0 +1,96 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+<app-cabecera-admi></app-cabecera-admi>
+                
+<br>
+            
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 form-container">
+                <h1 class="text-center">Editar Producto</h1>
+                <br>
+                <form [formGroup]="form" (ngSubmit)="modificarStock()"  class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="stockcant" class="form-label">Stock:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-card-list"></i></span>
+                            <input type="text" class="form-control" id="stockcant" formControlName="stockcant" placeholder="Ingrese la cantidad" required>
+                        </div>
+                        <div *ngIf="form.get('stockcant')?.invalid && form.get('stockcant')?.touched" class="text-danger">
+                            Cantidad es requerido.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="producto" class="form-label">Nombre del producto:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-card-list"></i></span>
+                            <input type="text" class="form-control" id="producto" formControlName="producto" placeholder="Ingrese el producto" required>
+                        </div>
+                        <div *ngIf="form.get('producto')?.invalid && form.get('producto')?.touched" class="text-danger">
+                            Producto es requerido.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripcion:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                            <input type="text" class="form-control" id="descripcion" formControlName="descripcion" placeholder="Ingrese la descripción" required>
+                        </div>
+                        <div *ngIf="form.get('descripcion')?.invalid && form.get('descripcion')?.touched" class="text-danger">
+                            La descripcion es requerida.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="marca" class="form-label">Marca:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                            <input type="text" class="form-control" id="marca" formControlName="marca" placeholder="Ingrese la marca" required>
+                        </div>
+                        <div *ngIf="form.get('marca')?.invalid && form.get('marca')?.touched" class="text-danger">
+                            La marca es requerida.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="precio" class="form-label">Precio:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                            <input type="text" class="form-control" id="precio" formControlName="precio" placeholder="Ingrese el precio" required>
+                        </div>
+                        <div *ngIf="form.get('precio')?.invalid && form.get('precio')?.touched" class="text-danger">
+                            El precio es requerido.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="proveedor" class="form-label">Proveedor:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                            <select formControlName="proveedor" id="proveedor" class="form-select  form-control">
+                                <option value="" disabled selected>Seleccione un proveedor</option>
+                                @for (elem of listaProveedor; track elem) {
+                                <!--option  value="{{elem.id}}"-->
+                                <option  value="{{elem.id}}">
+                                    {{elem.nombre}}
+                                </option>
+                                }
+                            </select>
+                        </div>
+                        <div *ngIf="form.get('proveedor')?.invalid && form.get('proveedor')?.touched" class="text-danger">
+                            El proveedor es requerido.
+                        </div>
+                    </div>
+                        
+                    <div class="d-grid gap-5 d-flex justify-content-center mb-5">
+                        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Actualizar
+                            <i class="bi bi-person-plus-fill"></i>
+                        </button>
+                        <a routerLink="/stock" class="btn btn-secondary">Regresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+            
+            
+<br>
+<br>
+<app-pie-admi></app-pie-admi>

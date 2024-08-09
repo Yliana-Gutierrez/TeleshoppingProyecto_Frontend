@@ -1,0 +1,46 @@
+/* Estilos del navbar */
+.navbar-custom {
+    background: linear-gradient(to right, #9de0ad, #d4e157); /* Gradiente de colores verde pastel más vivo */
+    border-bottom: 2px solid #8bc34a; /* Borde inferior de color verde vivo */
+  }
+  
+  /* Estilos de los enlaces del navbar */
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link {
+    color: #141414; /* Color de texto blanco */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 1.1rem; /* Tamaño de fuente */
+    transition: color 0.3s ease-in-out;
+  }
+  
+  /* Estilos para los enlaces al pasar el mouse */
+  .navbar-custom .nav-link:hover,
+  .navbar-custom .navbar-brand:hover {
+    color: #f8f9fa; /* Color de texto al pasar el mouse */
+  }
+  
+  /* Estilos de los íconos del navbar */
+  .navbar-custom .nav-link i {
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+    color: #0f0c0c; /* Color de los íconos */
+  }
+  
+  /* Manteniendo los estilos originales del dropdown menu */
+  .navbar-custom .dropdown-menu {
+    background-color: #343a40; /* Fondo original del menú desplegable */
+    border-radius: 10px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+  }
+  
+ /* Estilos del dropdown menu */
+.navbar-custom .dropdown-menu {
+    background-color: #e8f5e9; /* Fondo del menú desplegable */
+    border-radius: 10px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+  }
+  /* Estilos para los elementos del dropdown al pasar el mouse */
+.navbar-custom .dropdown-item:hover {
+    background-color: #a5d6a7; /* Fondo al pasar el mouse */
+    color: #fff; /* Color del texto al pasar el mouse */
+  }
+  

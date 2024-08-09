@@ -1,0 +1,109 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+<app-cabecera></app-cabecera>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-12 form-container">
+      <h1 class="text-center">Generar Orden</h1>
+      <form [formGroup]="ordenForm" (ngSubmit)="agregarOrden()" class="needs-validation" novalidate>
+        <!-- Código -->
+        <div class="mb-3">
+          <label for="codigo" class="form-label">Código:</label>
+          <div class="input-group">
+            <span class="input-group-text">#</span>
+            <input type="text" id="codigo" class="form-control" formControlName="codigo" placeholder="Código generado automáticamente" readonly>
+          </div>
+        </div>
+        <!-- Cliente -->
+        <div class="mb-3">
+          <label for="cliente" class="form-label">Cliente:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input type="text" id="cliente" class="form-control" formControlName="cliente" placeholder="Ingrese el cliente" required>
+          </div>
+          <div *ngIf="ordenForm.get('cliente')?.invalid && ordenForm.get('cliente')?.touched" class="text-danger">
+            Cliente es requerido.
+          </div>
+        </div>
+        <!-- Productos -->
+          <div class="mb-3">
+            <label for="productosOrden" class="form-label">Productos:</label>
+            <textarea id="productosOrden" class="form-control" rows="5" formControlName="productos" readonly></textarea>
+          </div>
+        <!-- Fecha -->
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha de Generación:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+            <input type="date" id="fecha" class="form-control" formControlName="fecha" required readonly>
+          </div>
+        </div>
+        <!-- Total -->
+        <div class="mb-3">
+          <label for="total" class="form-label">Total:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-cash"></i></span>
+            <input type="text" id="total" class="form-control" formControlName="total" placeholder="Total" required readonly>
+          </div>
+        </div>
+        <!-- Botón Agregar Orden -->
+        <button type="submit" class="btn btn-success w-100" [disabled]="ordenForm.invalid">
+          <i class="bi bi-cart-plus mr-2"></i> Agregar Orden
+        </button>
+      </form>
+
+      <!-- Mensaje de Éxito -->
+      <div *ngIf="mensajeExito" class="alert alert-success mt-3">
+        {{ mensajeExito }}
+      </div>
+
+      <div class="mt-5" *ngIf="mostrarOrdenes">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Cliente</th>
+              <th>Fecha</th>
+              <th>Productos</th>
+              <th>Total</th>
+              <th>Estado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let orden of ordenes">
+              <td>{{ orden.codigo }}</td>
+              <td>{{ orden.cliente }}</td>
+              <td>{{ orden.fecha }}</td>
+              <td>{{ orden.producto }}</td> 
+              <td>{{ orden.total }}</td>
+              <td>{{ orden.estado }}</td>
+              <td class="button-cell">
+                <button class="btn btn-primary btn-spacing" (click)="editarOrden(orden.id)" title="Editar">
+                  <i class="bi bi-pencil-fill"></i>
+                </button>
+                
+                <button class="btn btn-danger btn-spacing" (click)="eliminarOrden(orden.id)" title="Eliminar">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+
+                <button class="btn btn-success" (click)="confirmarOrden(orden)" title="Confirmar">
+                  <i class="bi bi-check-circle-fill"></i>
+                </button>
+                
+                
+              </td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<br> <br>
+<app-pie></app-pie>
+

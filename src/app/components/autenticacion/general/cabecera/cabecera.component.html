@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/autenticacion/general">Teleshopping</a>
+    <button class="navbar-toggler" type="button" (click)="toggleDropdown('navbar')" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" role="button" (click)="toggleDropdown('perfil')" aria-expanded="false">
+            <i class="bi bi-person"></i> Mi Perfil
+          </a>
+          <ul class="dropdown-menu" [ngClass]="{'show': dropdowns['perfil']}" aria-labelledby="perfilDropdown">
+            <li>
+              <a class="dropdown-item" href="/autenticacion/general/cuerpo/perfil">
+                <i class="bi bi-pencil-square"></i> Actualizar Datos
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/autenticacion/general/cuerpo/cambiarcontrasena">
+                <i class="bi bi-key-fill"></i> Cambiar Contraseña
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/autenticacion/general/cuerpo/eliminarcuenta">
+                <i class="bi bi-trash"></i> Eliminar Cuenta
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/autenticacion/general/cuerpo/catalogo">
+            <i class="bi bi-shop"></i> Catálogo
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" role="button" (click)="toggleDropdown('pedidos')" aria-expanded="false">
+            <i class="bi bi-cart-fill"></i> Pedidos
+          </a>
+          <ul class="dropdown-menu" [ngClass]="{'show': dropdowns['pedidos']}" aria-labelledby="pedidosDropdown">
+            <li>
+              <a class="dropdown-item" href="/autenticacion/general/cuerpo/pedidos">
+                <i class="bi bi-file-earmark-text"></i> Orden de Compra
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/autenticacion/general/cuerpo/pago">
+                <i class="bi bi-credit-card"></i> Pago
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/autenticacion/general/cuerpo/entregas">
+            <i class="bi bi-truck"></i> Entregas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/autenticacion/general/cuerpo/quejas">
+            <i class="bi bi-exclamation-triangle-fill"></i> Quejas
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

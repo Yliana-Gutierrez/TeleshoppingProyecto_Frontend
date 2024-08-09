@@ -1,0 +1,120 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+<app-cabecera></app-cabecera>
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 form-container">
+            <h1 class="text-center">Detalle de la Queja</h1>
+            <br>
+            <form [formGroup]="form" (ngSubmit)="submitForm()" class="needs-validation" novalidate>
+
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">Nombre:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input type="text" id="firstName" class="form-control" formControlName="firstName" placeholder="Ingrese Nombre" required>
+                    </div>
+                    <div *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched" class="text-danger"> El Nombre es requerido.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Apellido:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Ingrese Apellido" required>
+                    </div>
+                    <div *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched" class="text-danger"> El Apellido es requerido.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Ingrese Email" required>
+                    </div>
+                    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger"> El Email es requerido.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="city" class="form-label">Ciudad:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                        <input type="text" class="form-control" id="city" formControlName="city" placeholder="Ingrese Ciudad" required>
+                    </div>
+                    <div *ngIf="form.get('city')?.invalid && form.get('city')?.touched" class="text-danger"> La Ciudad es requerida.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="postalCode" class="form-label">Código Postal:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-mailbox"></i></span>
+                        <input type="text" class="form-control" id="postalCode" formControlName="postalCode" placeholder="Ingrese Código Postal" required>
+                    </div>
+                    <div *ngIf="form.get('postalCode')?.invalid && form.get('postalCode')?.touched" class="text-danger"> El Código Postal es requerido.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="country" class="form-label">País:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-flag"></i></span>
+                        <select class="form-select" id="country" formControlName="country" required>
+                            <option value="" disabled selected>Selecciona un país</option>
+                            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="form.get('country')?.invalid && form.get('country')?.touched" class="text-danger"> Por favor seleccione un país.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="orderDate" class="form-label">Fecha de Pedido:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                        <input type="date" class="form-control" id="orderDate" formControlName="orderDate" placeholder="Fecha de Pedido" required>
+                    </div>
+                    <div *ngIf="form.get('orderDate')?.invalid && form.get('orderDate')?.touched" class="text-danger"> La Fecha de Pedido es requerida.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="deliveryDate" class="form-label">Fecha de Entrega:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar-check"></i></span>
+                        <input type="date" class="form-control" id="deliveryDate" formControlName="deliveryDate" placeholder="Fecha de Entrega" required>
+                    </div>
+                    <div *ngIf="form.get('deliveryDate')?.invalid && form.get('deliveryDate')?.touched" class="text-danger"> La Fecha de Entrega es requerida.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="incidentDetails" class="form-label">Detalles del Incidente:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                        <textarea class="form-control" id="incidentDetails" formControlName="incidentDetails" placeholder="Detalles del Incidente" style="height: 100px" required></textarea>
+                    </div>
+                    <div *ngIf="form.get('incidentDetails')?.invalid && form.get('incidentDetails')?.touched" class="text-danger"> Los Detalles del Incidente son requeridos.</div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="termsAndConditions" formControlName="termsAndConditions" required>
+                        <label class="form-check-label" for="termsAndConditions">Acepto los términos y condiciones</label>
+                    </div>
+                    <div *ngIf="form.get('termsAndConditions')?.invalid && form.get('termsAndConditions')?.touched" class="text-danger"> Aceptar los términos y condiciones es requerido.</div>
+                </div>
+
+                <div class="d-flex justify-content-center button-group">
+                    <button type="button" class="btn btn-secondary me-2" (click)="cancelForm()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary ms-2" [disabled]="form.invalid"> Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<br><br>
+
+<app-pie></app-pie>
+
+

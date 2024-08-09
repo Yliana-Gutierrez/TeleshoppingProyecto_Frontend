@@ -1,0 +1,36 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+
+<app-cabecera></app-cabecera>
+<app-cabecera-catalogo></app-cabecera-catalogo>
+<br>
+<div class="container">
+    <h2>Productos Favoritos</h2>
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+      <div class="col" *ngFor="let product of favoriteProducts">
+        <div class="card h-100">
+          <div class="card-img-top-container">
+            <img [src]="product.image" class="card-img-top" [alt]="product.title">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">Precio: {{ product.price | currency }}</p>
+            <div class="row row-cols-1 row-cols-md-5 g-1">
+              <a class="nav-link active" href="/autenticacion/administrador/cuerpo/pedidos-admi">
+                <button class="bi bi-cart-fill" (click)="addToCart(product)"></button>
+              </a>
+             
+              <a class="nav-link active" (click)="viewDescription(product)">
+                <button class="bi bi-eye"></button>
+              </a>
+            </div>
+            <br>
+            <button class="btn btn-danger" (click)="removeFromFavorites(product)">Eliminar de Favoritos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br><br><br><br><br><br><br><br><br>
+<app-pie></app-pie>

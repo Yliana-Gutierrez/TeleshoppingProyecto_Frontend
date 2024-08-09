@@ -1,0 +1,100 @@
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/autenticacion/administrador">Teleshopping: Administrador</a>
+    <button class="navbar-toggler" type="button" (click)="toggleDropdown('navbar')" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" role="button" (click)="toggleDropdown('perfil')" aria-expanded="false">
+            <i class="bi bi-person"></i> Mi Perfil
+          </a>
+          
+          <ul class="dropdown-menu" [ngClass]="{'show': dropdowns['perfil']}" aria-labelledby="perfilDropdown">
+            <li>
+              <a class="dropdown-item" href="/autenticacion/administrador/cuerpo/perfil-admi/registrar">
+                <i class="bi bi-person-plus"></i> Registrar Administrador
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/autenticacion/administrador/cuerpo/perfil-admi/actualizar">
+                <i class="bi bi-pencil"></i>Actualizar contraseña 
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/autenticacion/administrador/cuerpo/perfil-admi/eliminar">
+                <i class="bi bi-trash"></i> Eliminar Administrador
+              </a>
+            </li>            
+            <li>
+              <a class="dropdown-item" href="/autenticacion/administrador/cuerpo/perfil-admi/listar">
+                <i class="bi bi-pencil-square"></i> Administradores Registrados
+              </a>
+            </li>
+        
+            <li>
+              <a class="dropdown-item" href="/autenticacion/administrador/cuerpo/perfil-admi">
+                <i class="bi bi-pencil-square"></i> Usuarios Registrados
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/autenticacion/administrador/cuerpo/catalogo-admi">
+            <i class="bi bi-shop"></i> Catálogo
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" role="button" (click)="toggleDropdown('pedidos')" aria-expanded="false">
+            <i class="bi bi-cart-fill"></i> Pedidos
+          </a>
+          <ul class="dropdown-menu" [ngClass]="{'show': dropdowns['pedidos']}" aria-labelledby="pedidosDropdown">
+            <li>
+              <a class="dropdown-item" href="/autenticacion/administrador/cuerpo/pedidos-admi">
+                <i class="bi bi-file-earmark-text"></i> Orden de Compra
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/autenticacion/administrador/cuerpo/pago-admi">
+                <i class="bi bi-credit-card"></i> Pago
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/autenticacion/administrador/cuerpo/entregas-admi">
+            <i class="bi bi-truck"></i> Entregas
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" role="button" (click)="toggleDropdown('inventario')" aria-expanded="false">
+            <i class="bi bi-archive"></i> Inventario
+          </a>
+          <ul class="dropdown-menu" [ngClass]="{'show': dropdowns['inventario']}" aria-labelledby="inventarioDropdown">
+            <li>
+              <a class="dropdown-item" href="/autenticacion/administrador/cuerpo/inventario-admi/proveedor">
+                <i class="bi bi-file-earmark-text"></i> Proveedores
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/autenticacion/administrador/cuerpo/inventario-admi/stock">
+                <i class="bi bi-credit-card"></i> Stock
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/autenticacion/administrador/cuerpo/quejas-admi">
+            <i class="bi bi-exclamation-triangle-fill"></i> Quejas
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

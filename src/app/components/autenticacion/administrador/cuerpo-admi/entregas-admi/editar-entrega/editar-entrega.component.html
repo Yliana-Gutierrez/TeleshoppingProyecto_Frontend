@@ -1,0 +1,133 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+    <app-cabecera-admi></app-cabecera-admi>
+      
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 form-container">
+          <h1 class="text-center">modificar Entrega</h1>
+          <br>
+          <form [formGroup]="form" (ngSubmit)="modificarEntrega()" class="needs-validation" novalidate>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="usuarioId" class="form-label">Usuario:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-person"></i></span>
+                  <select formControlName="usuarioId" id="usuarioId" class="form-select" required>
+                    <option value="">Seleccione un usuario</option>
+                    <option *ngFor="let usuario of listaUsuario" [value]="usuario.id">{{ usuario.nombre }} {{ usuario.apellido }}</option>
+                  </select>
+                </div>
+                <div *ngIf="form.get('usuarioId')?.invalid && form.get('usuarioId')?.touched" class="text-danger">
+                  Usuario es requerido.
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="ordenCompra" class="form-label">Orden de Compra:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-receipt"></i></span>
+                  <input type="text" formControlName="ordenCompra" class="form-control" id="ordenCompra" placeholder="Ingrese la orden de compra" required>
+                </div>
+                <div *ngIf="form.get('ordenCompra')?.invalid && form.get('ordenCompra')?.touched" class="text-danger">
+                  Orden de Compra es requerida.
+                </div>
+              </div>
+            </div>
+  
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="descripcion" class="form-label">Descripción:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                  <input type="text" formControlName="descripcion" class="form-control" id="descripcion" placeholder="Ingrese la descripción" required>
+                </div>
+                <div *ngIf="form.get('descripcion')?.invalid && form.get('descripcion')?.touched" class="text-danger">
+                  Descripción es requerida.
+                </div>
+              </div>
+  
+
+                <!-- Empresa de Transporte -->
+                <div class="mb-3">
+                    <label for="nombreEmpresaTransporte" class="form-label">Empresa de Transporte:</label>
+                    <select formControlName="nombreEmpresaTransporte" id="nombreEmpresaTransporte" class="form-select" (change)="onEmpresaChange($event)">
+                    <option *ngFor="let empresa of listaEmpresaTransporte" [value]="empresa.id">{{ empresa.nombreEmpresa }}</option>
+                    </select>
+                </div>
+                
+            </div>
+  
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="fechaEnvio" class="form-label">Fecha de Envío:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                  <input type="date" formControlName="fechaEnvio" class="form-control" id="fechaEnvio" required>
+                </div>
+                <div *ngIf="form.get('fechaEnvio')?.invalid && form.get('fechaEnvio')?.touched" class="text-danger">
+                  Fecha de Envío es requerida.
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="numSeguimiento" class="form-label">Número de Seguimiento:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-barcode"></i></span>
+                  <input type="number" formControlName="numSeguimiento" class="form-control" id="numSeguimiento" placeholder="Ingrese el número de seguimiento" required>
+                </div>
+                <div *ngIf="form.get('numSeguimiento')?.invalid && form.get('numSeguimiento')?.touched" class="text-danger">
+                  Número de Seguimiento es requerido.
+                </div>
+              </div>
+            </div>
+  
+            <div class="row mb-3">
+                    <div class="mb-3">
+                        <label for="tipoTransporteId" class="form-label">Tipo de Transporte:</label>
+                        <select formControlName="tipoTransporteId" id="tipoTransporteId" class="form-select">
+                        <option *ngFor="let tipo of tiposFiltrados" [value]="tipo.id">{{ tipo.tipoTransporte }}</option>
+                        </select>
+                    </div>
+                    
+  
+              <div class="col-md-6">
+                <label for="fechaEntrega" class="form-label">Fecha de Entrega:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-calendar-check"></i></span>
+                  <input type="date" formControlName="fechaEntrega" class="form-control" id="fechaEntrega" required>
+                </div>
+                <div *ngIf="form.get('fechaEntrega')?.invalid && form.get('fechaEntrega')?.touched" class="text-danger">
+                  Fecha de Entrega es requerida.
+                </div>
+              </div>
+
+          
+
+            </div>
+  
+
+            <div class="mb-3">
+              <label for="direccionEntrega" class="form-label">Dirección de Entrega:</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                <input type="text" formControlName="direccionEntrega" class="form-control" id="direccionEntrega" placeholder="Ingrese la dirección de entrega" required>
+              </div>
+              <div *ngIf="form.get('direccionEntrega')?.invalid && form.get('direccionEntrega')?.touched" class="text-danger">
+                Dirección de Entrega es requerida.
+              </div>
+            </div>
+  
+            <div class="d-grid gap-5 d-flex justify-content-center mb-5">
+              <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-lg">Guardar</button>
+              <a class="btn btn-secondary btn-lg" routerLink="/autenticacion/administrador/cuerpo/entregas-admi">Regresar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <app-pie-admi></app-pie-admi>
+  </div>
+  

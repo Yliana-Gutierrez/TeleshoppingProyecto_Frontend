@@ -1,0 +1,79 @@
+
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+<app-cabecera></app-cabecera>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 form-container">
+      <h1 class="text-center">Actualizar Datos</h1>
+      <br>
+      <form [formGroup]="form" (ngSubmit)="Actualizar()" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="cedula" class="form-label">Cédula:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+            <input type="text" id="cedula" class="form-control" formControlName="cedula" maxlength="10"
+            minlength="10" required pattern="[0-9]+" placeholder="Ingrese su CI" (blur)="obtenerDatos()">
+          </div>
+          <div *ngIf="form.get('cedula')?.invalid && form.get('cedula')?.touched" class="text-danger">
+            Cédula es requerida.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input type="text" id="nombre" class="form-control" formControlName="nombre" placeholder="Ingrese su nombre">
+          </div>
+          <div *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="text-danger">
+            Nombre es requerido.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="apellido" class="form-label">Apellido:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input type="text" id="apellido" class="form-control" formControlName="apellido" placeholder="Ingrese su apellido">
+          </div>
+          <div *ngIf="form.get('apellido')?.invalid && form.get('apellido')?.touched" class="text-danger">
+            Apellido es requerido.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+            <input type="email" id="email" class="form-control" formControlName="email" placeholder="Ingrese su Email">
+          </div>
+          <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
+            Email es requerido y debe ser válido.
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">Actualizar</button>
+        <div *ngIf="mensaje" class="alert alert-info mt-3">
+          {{ mensaje }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br>
+
+<app-pie></app-pie>

@@ -1,0 +1,76 @@
+<app-cabecera-admi></app-cabecera-admi>
+<div class="container mt-4">
+    <!-- Header and Back Button -->
+    <div class="mb-4 d-flex justify-content-between align-items-center">
+      <h1 class="display-4">Detalles de la Entrega</h1>
+      <a routerLink="/autenticacion/administrador/cuerpo/entregas-admi" class="btn btn-primary">Regresar al listado</a>
+    </div>
+  
+    <!-- Card for Delivery Information -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title mb-4">Información de Entrega</h5>
+        
+        <!-- Basic Information -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <h6 class="card-subtitle mb-2 text-muted">Usuario:</h6>
+            <p class="card-text">{{usuario}}</p>
+          </div>
+          <div class="col-md-6">
+            <h6 class="card-subtitle mb-2 text-muted">Orden de Compra:</h6>
+            <p class="card-text">{{ordenCompra}}</p>
+          </div>
+        </div>
+  
+        <!-- Delivery Status and Description -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <h6 class="card-subtitle mb-2 text-muted">Estado:</h6>
+            <p class="card-text">{{estado}}</p>
+          </div>
+          <div class="col-md-6">
+            <h6 class="card-subtitle mb-2 text-muted">Descripción:</h6>
+            <p class="card-text">{{descripcion}}</p>
+          </div>
+        </div>
+  
+        <!-- Transport Information -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <h6 class="card-subtitle mb-2 text-muted">Nombre de la Empresa de Transporte:</h6>
+            <p class="card-text">{{nombreEmpresaTransporte}}</p>
+          </div>
+          <div class="col-md-6">
+            <h6 class="card-subtitle mb-2 text-muted">Tipo de Transporte:</h6>
+            <p class="card-text">{{tipoTransporte}}</p>
+          </div>
+        </div>
+  
+        <!-- Dates -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <h6 class="card-subtitle mb-2 text-muted">Fecha de Envío:</h6>
+            <p class="card-text">{{fechaEnvio | date:'dd/MM/yyyy'}}</p>
+          </div>
+          <div class="col-md-6">
+            <h6 class="card-subtitle mb-2 text-muted">Fecha de Entrega:</h6>
+            <p class="card-text">{{fechaEntrega | date:'dd/MM/yyyy'}}</p>
+          </div>
+        </div>
+  
+        <!-- Address -->
+        <div class="row">
+          <div class="col-md-12">
+            <h6 class="card-subtitle mb-2 text-muted">Dirección de Entrega:</h6>
+            <p class="card-text">{{direccionEntrega}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+<app-pie-admi></app-pie-admi>

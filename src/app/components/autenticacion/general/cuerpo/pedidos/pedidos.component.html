@@ -1,0 +1,98 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+<app-cabecera></app-cabecera>
+<br>
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 form-container"> 
+      <h1 class="text-center">Detalle de la Orden</h1>
+      <br>
+      <form [formGroup]="form" (ngSubmit)="addProduct()" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="producto" class="form-label">Producto:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-cart-fill"></i></span>
+            <input type="text" id="producto" class="form-control" formControlName="producto" placeholder="Ingrese el producto" required>
+          </div>
+          <div *ngIf="form.get('producto')?.invalid && form.get('producto')?.touched" class="text-danger">
+            Producto es requerido.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="cantidad" class="form-label">Cantidad:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-cash"></i></span>
+            <input type="number" id="cantidad" class="form-control" formControlName="cantidad" placeholder="Ingrese la cantidad" required min="0">
+          </div>
+          <div *ngIf="form.get('cantidad')?.invalid && form.get('cantidad')?.touched" class="text-danger">
+            Cantidad es requerida.
+          </div>
+        </div>
+    
+        <div class="mb-3">
+          <label for="precio" class="form-label">Precio Unitario:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-credit-card-2-back-fill"></i></span>
+            <input type="number" id="precio" class="form-control" formControlName="precio" placeholder="Ingrese el precio unitario" required>
+          </div>
+          <div *ngIf="form.get('precio')?.invalid && form.get('precio')?.touched" class="text-danger">
+            Precio es requerido.
+          </div>
+        </div>
+    
+        <div class="mb-3">
+          <label for="precioTotal" class="form-label">Precio Total:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-credit-card-2-back-fill"></i></span>
+            <input type="text" id="precioTotal" class="form-control" formControlName="precioTotal" placeholder="Precio total" [readonly]="true">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success w-100" [disabled]="form.invalid">
+          <i class="bi bi-cart-plus mr-2"></i> Agregar Producto
+        </button>
+      </form>
+      <hr>
+      <table class="table" *ngIf="mostrarTablaYBoton">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Precio Total</th>
+            <th>Estado</th> 
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let compra of compras; let i = index">
+            <td>{{ compra.nombre }}</td>
+            <td>{{ compra.cantidad }}</td>
+            <td>{{ compra.precioUnitario }}</td>
+            <td>{{ compra.precioTotal }}</td>
+            <td>{{ compra.estado }}</td> 
+            <td class="d-flex justify-content-start align-items-center">
+              <button class="btn btn-danger me-2" (click)="removeProduct(i)">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="mb-3" *ngIf="mostrarTablaYBoton">
+        <button type="button" class="btn btn-primary w-100" (click)="generarOrden()"> Generar Orden </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<br> <br>  <br> 
+
+  
+
+<app-pie></app-pie>

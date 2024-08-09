@@ -1,0 +1,29 @@
+/* Estilos del footer */
+.footer-custom {
+  background: linear-gradient(to right, #9de0ad, #d4e157); /* Gradiente de colores verde pastel más vivo */
+  padding: 5px 0; /* Espaciado en la parte superior e inferior */
+  color: #090909; /* Color de texto blanco */
+}
+
+/* Estilos de los enlaces del footer */
+.footer-custom a {
+  color: #090909; /* Color de los enlaces */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Estilos de los enlaces al pasar el mouse */
+.footer-custom a:hover {
+  color: #f8f9fa; /* Color de los enlaces al pasar el mouse */
+}
+
+/* Estilos de la lista en línea */
+.footer-custom .list-inline-item {
+  margin-right: 10px; /* Espaciado entre elementos de la lista */
+}
+
+/* Estilos de texto en el footer */
+.footer-custom p {
+  margin: 0; /* Sin margen para el texto del footer */
+}
+
+ 

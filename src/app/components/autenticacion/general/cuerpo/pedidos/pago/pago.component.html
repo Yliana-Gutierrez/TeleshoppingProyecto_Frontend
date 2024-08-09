@@ -1,0 +1,148 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+<app-cabecera></app-cabecera>
+
+
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;"></div>
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 form-container">
+      <h1 class="text-center">Realizar Pago</h1>
+      <br>
+      <form [formGroup]="form" (ngSubmit)="Agregar()" class="needs-validation" novalidate>
+        
+        <!-- Identificación -->
+        <div class="mb-3">
+          <label for="identificacion" class="form-label">Identificación:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+            <input type="text" id="identificacion" class="form-control" formControlName="identificacion" placeholder="Ingrese identificación" required>
+          </div>
+          <div *ngIf="form.get('identificacion')?.invalid && form.get('identificacion')?.touched" class="text-danger">
+            Identificación es requerida.
+          </div>
+        </div>
+        
+        <!-- Cliente -->
+        <div class="mb-3">
+          <label for="cliente" class="form-label">Cliente:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input type="text" id="cliente" class="form-control" formControlName="cliente" placeholder="Ingrese nombre del cliente">
+          </div>
+          <div *ngIf="form.get('cliente')?.invalid && form.get('cliente')?.touched" class="text-danger">
+            Cliente es requerido.
+          </div>
+        </div>
+        
+        <!-- Dirección -->
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-house-door"></i></span>
+            <input type="text" id="direccion" class="form-control" formControlName="direccion" placeholder="Ingrese dirección">
+          </div>
+          <div *ngIf="form.get('direccion')?.invalid && form.get('direccion')?.touched" class="text-danger">
+            Dirección es requerida.
+          </div>
+        </div>
+        
+        <!-- Teléfono -->
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+            <input type="tel" id="telefono" class="form-control" formControlName="telefono" placeholder="Ingrese teléfono">
+          </div>
+          <div *ngIf="form.get('telefono')?.invalid && form.get('telefono')?.touched" class="text-danger">
+            Teléfono es requerido.
+          </div>
+        </div>
+        
+        <!-- Tipo -->
+        <div class="mb-3">
+          <label for="tipo" class="form-label">Tipo:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-tag"></i></span>
+            <input type="text" id="tipo" class="form-control" formControlName="tipo" placeholder="Ingrese tipo">
+          </div>
+          <div *ngIf="form.get('tipo')?.invalid && form.get('tipo')?.touched" class="text-danger">
+            Tipo es requerido.
+          </div>
+        </div>
+        
+        <!-- Detalles -->
+        <div class="mb-3">
+          <label for="detalles" class="form-label">Detalles:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-info-circle-fill"></i></span>
+            <textarea id="detalles" class="form-control" formControlName="detalles" placeholder="Ingrese detalles"></textarea>
+          </div>
+          <div *ngIf="form.get('detalles')?.invalid && form.get('detalles')?.touched" class="text-danger">
+            Detalles son requeridos.
+          </div>
+        </div>
+        
+        <!-- Estado -->
+        <div class="mb-3">
+          <label for="estado" class="form-label">Estado:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-check-circle"></i></span>
+            <input type="text" id="estado" class="form-control" formControlName="estado" placeholder="Ingrese estado">
+          </div>
+          <div *ngIf="form.get('estado')?.invalid && form.get('estado')?.touched" class="text-danger">
+            Estado es requerido.
+          </div>
+        </div>
+        
+        <!-- Número de Tarjeta -->
+        <div class="mb-3">
+          <label for="numTarjeta" class="form-label">Número de Tarjeta:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+            <input type="text" id="numTarjeta" class="form-control" formControlName="numTarjeta" placeholder="Ingrese número de tarjeta">
+          </div>
+        </div>
+        
+        <!-- Expiración -->
+        <div class="mb-3">
+          <label for="expiracion" class="form-label">Expiración:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-calendar-check"></i></span>
+            <input type="Date" id="expiracion" class="form-control" formControlName="expiracion" placeholder="Ingrese expiración">
+          </div>
+        </div>
+        
+        <!-- Código de Seguridad -->
+        <div class="mb-3">
+          <label for="codigoSeguridad" class="form-label">Código de Seguridad:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+            <input type="text" id="codigoSeguridad" class="form-control" formControlName="codigoSeguridad" placeholder="Ingrese código de seguridad">
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">Realizar Pago</button>
+      
+        <div *ngIf="mensaje" class="alert alert-info mt-3">
+          {{ mensaje }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<br> <br>
+
+<app-pie></app-pie>
+

@@ -1,0 +1,74 @@
+<!------------------------------------------------------Menu de categorias------------------------------------------------------------->
+<nav class="navbar navbar-expand-lg navbar-custom border-bottom border-body" data-bs-theme="dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" [ngClass]="{'show': dropdownOpen}" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" role="button" (click)="toggleDropdown()" aria-expanded="false">
+            <i class="bi bi-list"></i> Categorías de Productos
+          </a>
+          <ul class="dropdown-menu" [ngClass]="{'show': dropdownOpen}" aria-labelledby="categoriasDropdown">
+            <li class="dropdown-submenu" (mouseenter)="openSubMenu('electronica')" (mouseleave)="closeSubMenu('electronica')">
+              <a class="dropdown-item dropdown-toggle" role="button" (click)="toggleSubMenu('electronica')">Electrónica</a>
+              <ul class="dropdown-menu" [ngClass]="{'show': subMenuOpen['electronica']}">
+                <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/electronica-admi/celulares-admi">Celulares</a></li>
+                <li class="dropdown-submenu" (mouseenter)="openSubMenu('ComputadorasyLaptops')" (mouseleave)="closeSubMenu('ComputadorasyLaptops')">
+                  <a class="dropdown-item dropdown-toggle" role="button" (click)="toggleSubMenu('ComputadorasyLaptops')">Computadoras & Laptops</a>
+                  <ul class="dropdown-menu" [ngClass]="{'show': subMenuOpen['ComputadorasyLaptops']}">
+                    <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/electronica-admi/computadoras-admi">Computadoras</a></li>
+                    <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/electronica-admi/laptops-admi">Laptops</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/electronica-admi/televisores-admi">Televisores</a></li>
+                <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/electronica-admi/electrodomesticos-admi">Electrodomésticos</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu" (mouseenter)="openSubMenu('modayaccesorios')" (mouseleave)="closeSubMenu('modayaccesorios')">
+              <a class="dropdown-item dropdown-toggle" role="button" (click)="toggleSubMenu('modayaccesorios')">Moda & Accesorios</a>
+              <ul class="dropdown-menu" [ngClass]="{'show': subMenuOpen['modayaccesorios']}">
+                <li class="dropdown-submenu" (mouseenter)="openSubMenu('ropa')" (mouseleave)="closeSubMenu('ropa')">
+                  <a class="dropdown-item dropdown-toggle" role="button" (click)="toggleSubMenu('ropa')">Ropa para Hombre & Mujer</a>
+                  <ul class="dropdown-menu" [ngClass]="{'show': subMenuOpen['ropa']}">
+                    <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/moda-y-accesorios-admi/ropa-de-mujer-admi">Ropa de mujer</a></li>
+                    <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/moda-y-accesorios-admi/ropa-h">Ropa de hombre</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/moda-y-accesorios-admi/calzados-admi">Calzado</a></li>
+                <li class="dropdown-submenu" (mouseenter)="openSubMenu('bolsosycarteras')" (mouseleave)="closeSubMenu('bolsosycarteras')">
+                  <a class="dropdown-item dropdown-toggle" role="button" (click)="toggleSubMenu('bolsosycarteras')">Bolsos & Carteras</a>
+                  <ul class="dropdown-menu" [ngClass]="{'show': subMenuOpen['bolsosycarteras']}">
+                    <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/moda-y-accesorios-admi/bolsos-admi">Bolsos</a></li>
+                    <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/moda-y-accesorios-admi/carteras-admi">Carteras</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu" (mouseenter)="openSubMenu('joyeriayrelojes')" (mouseleave)="closeSubMenu('joyeriayrelojes')">
+                  <a class="dropdown-item dropdown-toggle" role="button" (click)="toggleSubMenu('joyeriayrelojes')">Joyería & Relojes</a>
+                  <ul class="dropdown-menu" [ngClass]="{'show': subMenuOpen['joyeriayrelojes']}">
+                    <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/moda-y-accesorios-admi/joyeria-admi">Joyería</a></li>
+                    <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/moda-y-accesorios-admi/relojes-admi">Relojes</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu" (mouseenter)="openSubMenu('saludybelleza')" (mouseleave)="closeSubMenu('saludybelleza')">
+              <a class="dropdown-item dropdown-toggle" role="button" (click)="toggleSubMenu('saludybelleza')">Salud & Belleza</a>
+              <ul class="dropdown-menu" [ngClass]="{'show': subMenuOpen['saludybelleza']}">
+                <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/salud-y-belleza-admi/cuidado-de-piel-cabello-admi">Cuidado de la Piel & Cabello</a></li>
+                <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/salud-y-belleza-admi/maquillaje-admi">Maquillaje</a></li>
+                <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/salud-y-belleza-admi/suplementos-y-vitaminas-admi">Suplementos & Vitaminas</a></li>
+                <li><a class="dropdown-item" href="/autenticacion/administrador/cuerpo/catalogo-admi/salud-y-belleza-admi/equipos-de-ejercicio-admi">Equipos de Ejercicio</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/autenticacion/administrador/cuerpo/catalogo-admi/Producto-favoritos-admi">
+            <i class="bi bi-heart"></i> Favoritos
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

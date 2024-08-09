@@ -1,0 +1,86 @@
+
+.custom-header {
+  color: #000000;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.custom-search .form-control {
+  border: 2px solid #343a40;
+  border-radius: 5px;
+}
+
+.custom-search .btn {
+  background-color: #8ab0fa;
+  color: #ffffff;
+  border: 2px solid #4c535a;
+}
+
+.custom-table thead {
+  background-color: #87c0f9;
+  color: #ffffff;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #99c3ed;
+}
+
+.custom-table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+ /* Estilos del botón */
+ .form-container .btn-primary {
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.form-container .btn-primary:hover,
+.btn-agregar:hover {
+  background-color: #ff1493; /* Rosa más vivo */
+  border-color: #ff1493;
+}
+
+/* Contenedor de paginación personalizado */
+.pagination-controls {
+  background-color: #f8f9fa; /* Color de fondo */
+  border: 1px solid #dee2e6; /* Borde */
+  padding: 0.05rem 0.15rem; /* Espaciado interno más ajustado */
+  display: inline-flex; /* Usar inline-flex para ajustar el tamaño al contenido */
+  border-radius: 0.25rem; /* Esquinas redondeadas */
+  align-items: center; /* Alinear los elementos al centro */
+  margin: 0; /* Eliminar cualquier margen adicional */
+}
+
+/* Estilo para los enlaces de paginación */
+.pagination-controls .ngx-pagination a.page-link {
+  color: #343a40; /* Color del texto */
+  text-decoration: none;
+  padding: 0.15rem 0.3rem; /* Espaciado interno más ajustado */
+  margin: 0 0.1rem; /* Margen ajustado */
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo para el enlace de paginación actual */
+.pagination-controls .ngx-pagination .current a.page-link {
+  background-color: #8ab0fa; /* Color de fondo del elemento activo */
+  border-color: #343a40; /* Color del borde del elemento activo */
+  color: #bdec57; /* Color del texto del elemento activo */
+}
+
+/* Estilo para los enlaces deshabilitados */
+.pagination-controls .ngx-pagination .disabled a.page-link {
+  color: #6c757d; /* Color del texto del elemento deshabilitado */
+}
+
+/* Estilo para los enlaces al pasar el ratón por encima */
+.pagination-controls .ngx-pagination a.page-link:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el ratón */
+  color: #fff; /* Color del texto al pasar el ratón */
+}
+
+
+.table-header-celeste {
+  background-color: #062a38; /* Color celeste */
+  color: rgb(221, 49, 49); /* Para que el texto sea blanco y contraste con el fondo */
+}

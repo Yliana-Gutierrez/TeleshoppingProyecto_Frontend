@@ -1,0 +1,80 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+
+<app-cabecera-admi></app-cabecera-admi>
+<app-cabecera-catalogo-admi></app-cabecera-catalogo-admi>
+<br>
+<!-- --------------------------------------------Tarjetas de los productos-------------------------------------------- -->
+<div class="container" style="overflow: hidden;">
+    <!-- --------------------------------------------Equipos de ejercicios-------------------------------------------- -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Equipos de ejercicios</h2>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Buscar producto" [(ngModel)]="searchTerm" (ngModelChange)="filterProducts()">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="sortByPrice('asc')">Precio ascendente</button>
+            <button class="btn btn-outline-secondary" type="button" (click)="sortByPrice('desc')">Precio descendente</button>
+          </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-5 g-4">
+          <div class="col" *ngFor="let product of filteredEquipos_ejercicios; let i = index">
+            <div class="card h-100">
+              <div class="card-img-top-container">
+                <img [src]="product.image" class="card-img-top" [alt]="product.title">
+                <!-- <div *ngIf="product.isEditing" class="image-upload">
+                  <input type="file" (change)="onFileSelected($event, i)">
+                </div> -->
+              </div>
+              <div class="card-body">
+                <h5 *ngIf="product.isEditing" class="image-url-input">
+                  <input type="text" [(ngModel)]="product.image" placeholder="Ingrese URL de la imagen" class="form-control form-control-sm">
+                </h5>
+                <h5 class="card-title">
+                  <span *ngIf="!product.isEditing">{{ product.title }}</span>
+                  <input *ngIf="product.isEditing" [(ngModel)]="product.title" class="form-control form-control-sm" />
+                </h5>
+                <p class="card-text">
+                  <span *ngIf="!product.isEditing">Precio: {{ product.price | currency }}</span>
+                  <input *ngIf="product.isEditing" [(ngModel)]="product.price" class="form-control form-control-sm" type="number" />
+                </p>
+                <br>
+                <br>
+                <div class="row row-cols-1 row-cols-md-5 g-1">
+                  <a class="nav-link active" href="/autenticacion/administrador/cuerpo/pedidos-admi">
+                    <button class="bi bi-cart-fill" (click)="addToCart(product)"></button>
+                  </a>
+                  <a class="nav-link active" (click)="viewDescription(product)">
+                    <button class="bi bi-eye"></button>
+                  </a>
+                  <a class="nav-link active" href="/autenticacion/administrador/cuerpo/catalogo-admi/Producto-favoritos-admi">
+                    <button class="bi bi-bookmark-heart" (click)="addToFavorites(product)"></button>
+                  </a>
+                  <a><button class="bi bi-trash" (click)="removeCard(i)"></button></a>
+                  <a><button class="bi bi-pencil" (click)="editCard(i)"></button></a>
+                  <a><button class="bi bi-floppy" *ngIf="product.isEditing" (click)="saveCard(i)"></button></a>
+                  <a><button class="bi bi-tag" (click)="addToOnSale(product.id!)"></button></a>
+                  <a><button class="bi bi-star" (click)="addToFatured(product.id!)"></button></a>
+                </div>
+                <div *ngIf="recentlyAddedToFavorites === product && showFavoriteMessage" class="alert alert-success">
+                  Guardado en Favoritos
+                </div>
+                <div *ngIf="recentlyAddedToOnSale === product.id && showOnSaleMessage" class="alert alert-success">
+                  Se agrego en productos en Oferta
+                </div>
+                <div *ngIf="recentlyAddedToFeatured === product.id && showFeaturedMessage" class="alert alert-success">
+                  Se agrego en productos destacados
+                </div>
+                <div *ngIf="saveMessages[product.id!]" class="alert alert-success">
+                  {{ saveMessages[product.id!] }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-success mt-3" (click)="addCard()">Agregar más Card</button>
+      </div>
+    </div>
+  </div>
+  <br>
+<app-pie-admi></app-pie-admi>

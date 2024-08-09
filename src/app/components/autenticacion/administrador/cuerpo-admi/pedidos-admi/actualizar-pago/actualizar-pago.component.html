@@ -1,0 +1,118 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+
+<app-cabecera-admi></app-cabecera-admi>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 form-container">
+        <h1 class="text-center">Editar Pago</h1>
+    <form [formGroup]="actualizarPagoForm" (ngSubmit)="Actualizar()">
+      <!-- Identificación -->
+      <div class="mb-3">
+        <label for="identificacion" class="form-label">Identificación:</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-person-badge-fill"></i></span>
+          <input type="text" id="identificacion" class="form-control" maxlength="10" minlength="10" required pattern="[0-9]+" placeholder="Ingrese identificación" formControlName="identificacion">
+        </div>
+        <div *ngIf=" actualizarPagoForm.get('identificacion')?.invalid &&  actualizarPagoForm.get('identificacion')?.touched" class="text-danger">
+          Identificación es requerida.
+        </div>
+      </div>
+
+      <!-- Cliente -->
+      <div class="mb-3">
+        <label for="cliente" class="form-label">Cliente:</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+          <input type="text" id="cliente" class="form-control" placeholder="Ingrese el cliente" formControlName="cliente">
+        </div>
+        <div *ngIf=" actualizarPagoForm.get('cliente')?.invalid &&  actualizarPagoForm.get('cliente')?.touched" class="text-danger">
+          Cliente es requerido.
+        </div>
+      </div>
+      
+      <!-- Dirección -->
+      <div class="mb-3">
+        <label for="direccion" class="form-label">Dirección:</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-house-fill"></i></span>
+          <input type="text" id="direccion" class="form-control" placeholder="Ingrese dirección" formControlName="direccion">
+        </div>
+      <div *ngIf=" actualizarPagoForm.get('direccion')?.invalid &&  actualizarPagoForm.get('direccion')?.touched" class="text-danger">
+        Dirección es requerido.
+      </div>
+      </div>
+      
+      <!-- Teléfono -->
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono:</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+          <input type="text" id="telefono" class="form-control" maxlength="10" minlength="10" required pattern="[0-9]+" placeholder="Ingrese teléfono" formControlName="telefono">
+        </div>
+        <div *ngIf=" actualizarPagoForm.get('telefono')?.invalid &&  actualizarPagoForm.get('telefono')?.touched" class="text-danger">
+          Teléfono es requerido.
+        </div>
+      </div>
+      
+      <!-- Tipo de Pago -->
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo de Pago:</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-wallet-fill"></i></span>
+          <input type="text" id="tipo" class="form-control" placeholder="Ingrese el tipo de pago" formControlName="tipo">
+        </div>
+        <div *ngIf=" actualizarPagoForm.get('tipo')?.invalid &&  actualizarPagoForm.get('tipo')?.touched" class="text-danger">
+          Tipo de Pago es requerido.
+        </div>
+      </div>
+      
+      <!-- Detalles -->
+      <div class="mb-3">
+        <label for="detalles" class="form-label">Detalles:</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-file-earmark-text-fill"></i></span>
+          <textarea id="detalles" class="form-control" placeholder="Ingrese detalles" rows="3" formControlName="detalles"></textarea>
+        </div>
+        <div *ngIf=" actualizarPagoForm.get('detalles')?.invalid &&  actualizarPagoForm.get('detalles')?.touched" class="text-danger">
+          Detalles son requeridos.
+        </div>
+      </div>
+      
+      <!-- Estado -->
+      <div class="mb-3">
+        <label for="estado" class="form-label">Estado:</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-info-circle-fill"></i></span>
+          <input type="text" id="estado" class="form-control" placeholder="Ingrese el estado" formControlName="estado">
+        </div>
+        <div *ngIf=" actualizarPagoForm.get('estado')?.invalid &&  actualizarPagoForm.get('estado')?.touched" class="text-danger">
+          Estado es requerido.
+        </div>
+
+      </div>
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="/autenticacion/administrador/cuerpo/pago-admi" class="btn btn-secondary">Cancelar</a>
+      </div>
+      <div *ngIf="mensaje" class="alert alert-info mt-3">
+        {{ mensaje }}
+      </div>
+    </form>
+  </div>
+</div> 
+</div>
+
+
+
+
+
+
+
+
+<br> <br> 
+
+
+
+<app-pie-admi></app-pie-admi>

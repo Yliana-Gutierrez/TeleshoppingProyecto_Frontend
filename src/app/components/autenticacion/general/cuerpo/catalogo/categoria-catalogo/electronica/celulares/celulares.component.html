@@ -1,0 +1,53 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+<app-cabecera></app-cabecera>
+<app-cabecera-catalogo></app-cabecera-catalogo>
+<br>
+<!-- --------------------------------------------Tarjetas de los productos-------------------------------------------- -->
+<div class="container" style="overflow: hidden;">
+    <!-- --------------------------------------------Celulares-------------------------------------------- -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Celulares</h2>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Buscar producto" [(ngModel)]="searchTerm" (ngModelChange)="filterProducts()">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="sortByPrice('asc')">Precio ascendente</button>
+            <button class="btn btn-outline-secondary" type="button" (click)="sortByPrice('desc')">Precio descendente</button>
+          </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-5 g-4">
+          <div class="col" *ngFor="let product of filteredCelulares; let i = index">
+            <div class="card h-100">
+              <div class="card-img-top-container">
+                <img [src]="product.image" class="card-img-top" [alt]="product.title"> 
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">Precio: {{ product.price | currency }}</p>
+                <br>
+                <br>
+                <div class="row row-cols-1 row-cols-md-5 g-1">
+                  <a class="nav-link active" href="/autenticacion/general/cuerpo/pedidos">
+                    <button class="bi bi-cart-fill" (click)="addToCart(product)"></button>
+                  </a>
+                  <a class="nav-link active" (click)="viewDescription(product)">
+                    <button class="bi bi-eye"></button>
+                  </a>
+                  <a class="nav-link active" href="/autenticacion/general/cuerpo/catalogo/Producto-favoritos">
+                    <button class="bi bi-bookmark-heart" (click)="addToFavorites(product)"></button>
+                  </a>
+                </div>
+                <div *ngIf="recentlyAddedToFavorites === product && showFavoriteMessage" class="alert alert-success">
+                  Guardado en Favoritos
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<app-pie></app-pie>

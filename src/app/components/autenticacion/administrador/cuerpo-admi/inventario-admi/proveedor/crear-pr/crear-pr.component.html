@@ -1,0 +1,59 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+<app-cabecera-admi></app-cabecera-admi>
+        
+<br>
+    
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 form-container">
+            <h1 class="text-center">Agregar Proveedor</h1>
+            <br>
+            <form [formGroup]="form" (ngSubmit)="agregarProveedor()"  class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-card-list"></i></span>
+                        <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Ingrese el nombre" required>
+                    </div>
+                    <div *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="text-danger">
+                        Nombre es requerido.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="origen" class="form-label">Origen:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-card-list"></i></span>
+                        <input type="text" class="form-control" id="origen" formControlName="origen" placeholder="Ingrese el origen" required>
+                    </div>
+                    <div *ngIf="form.get('origen')?.invalid && form.get('origen')?.touched" class="text-danger">
+                        Origen es requerido.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="contacto" class="form-label">Contacto:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                        <input type="text" class="form-control" id="contacto" formControlName="contacto" placeholder="Ingrese el contacto" required>
+                    </div>
+                    <div *ngIf="form.get('contacto')?.invalid && form.get('contacto')?.touched" class="text-danger">
+                        Contacto es requerido.
+                    </div>
+                </div>
+                
+                
+                <div class="d-grid gap-5 d-flex justify-content-center mb-5">
+                    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Agregar
+                        <i class="bi bi-person-plus-fill"></i>
+                    </button>
+                    <a  routerLink="/proveedor" class="btn btn-secondary">Regresar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>    
+    
+    
+<br>
+<br>
+<app-pie-admi></app-pie-admi>

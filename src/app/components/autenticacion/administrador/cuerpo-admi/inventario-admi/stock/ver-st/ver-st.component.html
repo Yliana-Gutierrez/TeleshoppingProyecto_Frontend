@@ -1,0 +1,30 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+<app-cabecera-admi></app-cabecera-admi>
+    
+<br>
+<br>
+<br>
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card bordered-card" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{nombreProducto}}</h5>
+          <p class="card-text">{{stock}}</p>
+          <p class="card-text">{{descripcion}}</p>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Proveedor: {{proveedor}}</h6>
+          <p class="card-text">{{origen}} </p>
+          <p class="card-text">{{contacto}}</p>
+          <br>
+          <a routerLink="/stock" class="card-link">Regresar al listado</a>
+        </div>
+      </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<app-pie-admi></app-pie-admi>

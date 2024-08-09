@@ -1,0 +1,71 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+
+<app-cabecera-admi></app-cabecera-admi>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 form-container">
+      <h1 class="text-center">Agregar Empresa de Transporte</h1>
+      <br>
+      <form [formGroup]="form" (ngSubmit)="agregarEmpresaTransporte()" class="needs-validation" novalidate>
+
+        <div class="mb-3">
+          <label for="nombreEmpresa" class="form-label">Nombre de la Empresa:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-building"></i></span>
+            <input type="text" formControlName="nombreEmpresa" class="form-control" id="nombreEmpresa" placeholder="Ingrese el nombre de la empresa" required>
+          </div>
+          <div *ngIf="form.get('nombreEmpresa')?.invalid && form.get('nombreEmpresa')?.touched" class="text-danger">
+            Nombre de la Empresa es requerido.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="ruc" class="form-label">RUC:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-card-heading"></i></span>
+            <input type="text" formControlName="ruc" class="form-control" id="ruc" placeholder="Ingrese el RUC" required>
+          </div>
+          <div *ngIf="form.get('ruc')?.invalid && form.get('ruc')?.touched" class="text-danger">
+            RUC es requerido.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="correo" class="form-label">Correo Electrónico:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+            <input type="email" formControlName="correo" class="form-control" id="correo" placeholder="Ingrese el correo electrónico" required>
+          </div>
+          <div *ngIf="form.get('correo')?.invalid && form.get('correo')?.touched" class="text-danger">
+            Correo Electrónico es requerido.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+            <input type="text" formControlName="telefono" class="form-control" id="telefono" placeholder="Ingrese el teléfono" required>
+          </div>
+          <div *ngIf="form.get('telefono')?.invalid && form.get('telefono')?.touched" class="text-danger">
+            Teléfono es requerido.
+          </div>
+        </div>
+
+        <div class="d-grid gap-5 d-flex justify-content-center mb-5">
+          <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          <a class="btn btn-secondary btn-lg" routerLink="/autenticacion/administrador/cuerpo/entregas-admi">Regresar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<br> <br> <br> <br> <br> <br> <br>
+
+
+<app-pie-admi></app-pie-admi>

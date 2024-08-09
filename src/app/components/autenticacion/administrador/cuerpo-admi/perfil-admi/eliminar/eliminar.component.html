@@ -1,0 +1,45 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+    <app-cabecera-admi></app-cabecera-admi>
+    
+    <br> <br> <br> <br> <br> 
+  
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6 form-container"> 
+          <h1 class="text-center">Eliminar Administrador</h1>
+          <br>
+          <form [formGroup]="eliminarForm" (ngSubmit)="eliminarAdmi()" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="nombreUsuarioAdmi" class="form-label">Usuario:</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input type="text" id="nombreUsuarioAdmi" formControlName="nombreUsuarioAdmi" class="form-control" placeholder="Ingrese el usuario" required maxlength="10" minlength="10" required pattern="[0-9]+">
+              </div>
+              <div *ngIf="eliminarForm.get('nombreUsuarioAdmi')?.invalid && eliminarForm.get('nombreUsuarioAdmi')?.touched" class="text-danger">
+                Usuario es requerido.
+              </div>
+            </div>
+    
+            <button [disabled]="eliminarForm.invalid" type="submit" class="btn btn-danger w-100">Eliminar Cuenta</button>
+          </form>
+    
+          <div *ngIf="mensajeConfirmacion" class="alert alert-warning mt-3 text-center">
+            {{ mensajeConfirmacion }}<br>
+            <div class="d-flex justify-content-center mt-3">
+              <button class="btn btn-danger me-2" (click)="confirmarEliminacionAdmi()">Aceptar</button>
+              <button class="btn btn-secondary ms-2" (click)="cancelarEliminacionAdmi()">Cancelar</button>
+            </div>
+          </div>
+    
+          <div *ngIf="mensajeExito" class="alert alert-success mt-3">
+            {{ mensajeExito }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <br> <br> <br> <br> <br> <br> <br> <br>
+    
+    <app-pie-admi></app-pie-admi>
+    

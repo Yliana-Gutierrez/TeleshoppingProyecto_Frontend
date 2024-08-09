@@ -1,0 +1,38 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+    <app-cabecera></app-cabecera>
+    <app-cabecera-catalogo></app-cabecera-catalogo>
+    <br>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-10 form-container">
+            <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">Atras</button>
+            <div class="card bg-transparent border-0" *ngIf="producto">
+              <div class="row g-0">
+                <div class="col-md-4 form-container">
+                  <img [src]="producto.image" [alt]="producto.title" class="img-fluid rounded">
+                </div>
+                <div class="col-md-8 form-container">
+                  <div class="card-body">
+                    <h2 class="card-title">{{ producto.title }}</h2>
+                    <p class="card-text"><strong>Precio:</strong> {{ producto.price | currency }}</p>
+                    <p class="card-text"><strong>Descripción:</strong> {{ producto.description }}</p>
+                    <p class="card-text"><strong>Código:</strong> {{ producto.code }}</p>
+                    <p class="card-text"><strong>Categoría:</strong> {{ producto.category }}</p>
+                    <p class="card-text"><strong>Disponible:</strong> {{ producto.available ? 'Sí' : 'No' }}</p>
+                    <p class="card-text"><strong>En oferta:</strong> {{ producto.isOnSale ? 'Sí' : 'No' }}</p>
+                    <p class="card-text"><strong>Destacado:</strong> {{ producto.isFeatured ? 'Sí' : 'No' }}</p>
+                    <div class="mt-3 ">
+                     
+                      <!-- <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">Atras</button> -->
+                      <button class="bi bi-cart-fill" type="button" class="btn btn-success" (click)="onBuy()">Comprar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <br>
+    <app-pie></app-pie>

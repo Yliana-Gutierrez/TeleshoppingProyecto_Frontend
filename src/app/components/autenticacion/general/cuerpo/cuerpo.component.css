@@ -1,0 +1,40 @@
+
+
+/* Estilos para la tarjeta */
+.custom-card {
+  max-width: 600px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #FFC3A0, #FFAFBD); /* Gradiente de colores pastel */
+  color: #0a0909; /* Color de texto blanco */
+  overflow: hidden; /* Oculta el contenido que se desborde */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Estilos para el contenido dentro de la tarjeta */
+.card-content {
+  padding: 40px;
+}
+
+.card-img {
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.lead {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Efecto de hover para la tarjeta */
+.custom-card:hover {
+  transform: scale(1.02); /* Escala ligeramente más grande al pasar el mouse */
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+}
+

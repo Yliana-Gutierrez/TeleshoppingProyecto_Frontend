@@ -1,0 +1,50 @@
+
+
+  <div class="container-fluid d-flex justify-content-center align-items-center vh-100 login-container" style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/388/774/original/women-happy-with-shopping-on-mobile-pay-by-credit-card-shopping-online-in-an-online-store-on-a-website-or-mobile-application-concept-loves-shopping-design-for-sale-banner-digital-marketing-vector.jpg');">
+
+      <div class="card p-4 custom-card" style="max-width: 400px; margin-top: 145px;">
+      <h3 class="card-title text-center mb-4 custom-title">Inicio de Sesión</h3>
+      <form [formGroup]="form" (ngSubmit)="iniciarSesion()">
+        <div class="mb-3">
+          <label for="cedula" class="form-label">Nombre de usuario:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" id="cedula" formControlName="cedula" class="form-control" placeholder="Ingrese el usuario" required maxlength="10" minlength="10" required pattern="[0-9]+">
+          </div>
+          <div *ngIf="form.get('cedula')?.invalid && form.get('cedula')?.touched" class="text-danger">
+            Usuario es requerido.
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input type="password" id="password" formControlName="password" class="form-control" [type]="mostrarPass ? 'text' : 'password'" placeholder="Ingrese la contraseña" required>
+            <button type="button" class="btn btn-outline-secondary" (click)="mostrarContrasena()" aria-label="Mostrar/ocultar password">
+              <i *ngIf="!mostrarPass" class="bi bi-eye"></i>
+              <i *ngIf="mostrarPass" class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+          <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-danger">
+            Contraseña es requerida.
+          </div>
+        </div>
+  
+        <button [disabled]="form.invalid" type="submit" class="btn btn-primary w-100 animate__animated animate__fadeIn">Iniciar sesión</button>
+  
+        <div class="text-center mt-3">
+          <a class="link-primary" (click)="recuperarContrasena()">¿Olvidaste tu contraseña?</a>
+        </div>
+  
+        <div class="text-center mt-3">
+          <a class="link-primary" (click)="ventanaRegistro()">¿No tienes cuenta? Regístrate aquí</a>
+        </div>
+  
+        <div *ngIf="mensajeError" class="alert alert-danger mt-3">
+          {{ mensajeError }}
+        </div>
+      </form>
+    </div>
+  </div>
+  

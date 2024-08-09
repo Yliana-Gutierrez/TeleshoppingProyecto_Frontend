@@ -1,0 +1,209 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  <app-cabecera-admi></app-cabecera-admi>
+  <app-cabecera-catalogo-admi></app-cabecera-catalogo-admi>
+  <br>
+  <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-10 form-container">
+          <h1 class="text-center">Producto</h1>
+          <br>
+          <div class="card border-0" *ngIf="productoForm">
+            <div class="row g-0">
+              <div class="col-md-6 form-container">
+                <img [src]="productoForm.get('image')?.value" [alt]="productoForm.get('title')?.value" class="img-fluid rounded">
+              </div>
+              <div class="col-md-6 form-container">
+                <div class="card-body">
+                  <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                      <label for="image" class="form-label">URL de la imagen:</label>
+                      <input type="text" class="form-control" id="image" formControlName="image" required>
+                      <div *ngIf="productoForm.get('image')?.invalid && (productoForm.get('image')?.dirty || productoForm.get('image')?.touched)" class="text-danger">
+                        Este campo es obligatorio
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Título:</label>
+                      <input type="text" class="form-control" id="title" formControlName="title" required>
+                      <div *ngIf="productoForm.get('title')?.invalid && (productoForm.get('title')?.dirty || productoForm.get('title')?.touched)" class="text-danger">
+                        Este campo es obligatorio
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="price" class="form-label">Precio:</label>
+                      <input type="number" class="form-control" id="price" formControlName="price" required>
+                      <div *ngIf="productoForm.get('price')?.invalid && (productoForm.get('price')?.dirty || productoForm.get('price')?.touched)" class="text-danger">
+                        Este campo es obligatorio
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="description" class="form-label">Descripción:</label>
+                      <textarea class="form-control" id="description" formControlName="description" required></textarea>
+                      <div *ngIf="productoForm.get('description')?.invalid && (productoForm.get('description')?.dirty || productoForm.get('description')?.touched)" class="text-danger">
+                        Este campo es obligatorio
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="code" class="form-label">Código:</label>
+                      <input type="text" class="form-control" id="code" formControlName="code" required>
+                      <div *ngIf="productoForm.get('code')?.invalid && (productoForm.get('code')?.dirty || productoForm.get('code')?.touched)" class="text-danger">
+                        Este campo es obligatorio
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="category">Categoría:</label>
+                      <select class="form-control" id="category" formControlName="category" required>
+                        <option value="" disabled selected>Seleccione una categoría</option>
+                        <option value="celulares">Celulares</option>
+                        <option value="computadoras">Computadoras</option>
+                        <option value="electrodomesticos">Electrodomesticos</option>
+                        <option value="laptops">Laptops</option>
+                        <option value="televisores">Televisores</option>
+                        <option value="bolsos">Bolsos</option>
+                        <option value="calzado">Calzado</option>
+                        <option value="carteras">Carteras</option>
+                        <option value="joyeria">Joyeria</option>
+                        <option value="relojes">Relojes</option>
+                        <option value="ropa_mujer">Ropa de mujer</option>
+                        <option value="ropa_hombre">Ropa de hombre</option>
+                        <option value="cuidado_piel_cabello">Cuidado de piel y cabello</option>
+                        <option value="equipos_ejercicios">Equipos de ejercicios</option>
+                        <option value="maquillaje">Maquillaje</option>
+                        <option value="suplementos_vitaminas">Suplementos y vitaminas</option>
+                      </select>
+                      <div *ngIf="productoForm.get('category')?.invalid && (productoForm.get('category')?.dirty || productoForm.get('category')?.touched)" class="text-danger">
+                        Debe seleccionar una categoría
+                      </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="available" formControlName="available">
+                      <label class="form-check-label" for="available">Disponible</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="isOnSale" formControlName="isOnSale">
+                      <label class="form-check-label" for="isOnSale">En oferta</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="isFeatured" formControlName="isFeatured">
+                      <label class="form-check-label" for="isFeatured">Destacado</label>
+                    </div>
+                    <div class="mt-3">
+                      <button type="submit" class="btn btn-primary me-2" [disabled]="!productoForm.valid">Guardar</button>
+                      <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">Cancelar</button>
+                      <button type="button" class="btn btn-danger me-2" (click)="removeProduct()"><i class="bi bi-trash"></i> Eliminar</button>
+                    </div>
+                    <!-- Mensaje de confirmación -->
+                    <div *ngIf="showConfirmation" class="alert alert-success mt-3" role="alert">
+                      El producto se ha guardado correctamente.
+                    </div>
+                    <!-- Mensaje de error -->
+                    <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">
+                      Ha ocurrido un error al guardar el producto. Por favor, intente nuevamente.
+                    </div>
+                    <!-- Mensaje de confirmación -->
+                    <div *ngIf="showDeleteConfirmation" class="alert alert-success mt-3" role="alert">
+                      El producto se ha eliminado correctamente.
+                    </div>
+
+                    <!-- Mensaje de error -->
+                    <div *ngIf="showErrorDelete" class="alert alert-danger mt-3" role="alert">
+                      Ha ocurrido un error al eliminar el producto. Por favor, intente nuevamente.
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  <br>
+  <app-pie-admi></app-pie-admi>
+</div>
+
+
+
+
+
+
+
+
+<!-- 
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+  <app-cabecera-admi></app-cabecera-admi>
+  <app-cabecera-catalogo-admi></app-cabecera-catalogo-admi>
+  <br>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card bg-transparent border-0" *ngIf="producto">
+          <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img [src]="producto.image" [alt]="producto.title" class="img-fluid rounded">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="title">Título:</label>
+                    <input type="text" class="form-control" id="title" formControlName="title">
+                  </div>
+                  <div class="form-group">
+                    <label for="price">Precio:</label>
+                    <input type="number" class="form-control" id="price" formControlName="price">
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Descripción:</label>
+                    <textarea class="form-control" id="description" formControlName="description"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="code">Código:</label>
+                    <input type="text" class="form-control" id="code" formControlName="code">
+                  </div>
+                  <div class="form-group">
+                    <label for="category">Categoría:</label>
+                    <select class="form-control" id="category" formControlName="category">
+                      <option value="celulares">Celulares</option>
+                      <option value="computadoras">Computadoras</option>
+                      <option value="electrodomesticos">Electrodomesticos</option>
+                      <option value="laptops">Laptops</option>
+                      <option value="televisores">Televisores</option>
+                      <option value="bolsos">Bolsos</option>
+                      <option value="calzado">Calzado</option>
+                      <option value="carteras">Carteras</option>
+                      <option value="joyeria">Joyeria</option>
+                      <option value="relojes">Relojes</option>
+                      <option value="ropa_mujer">Ropa de mujer</option>
+                      <option value="ropa_hombre">Ropa de hombre</option>
+                      <option value="cuidado_piel_cabello">Cuidado de piel y cabello</option>
+                      <option value="equipos_ejercicios">Equipos de ejercicios</option>
+                      <option value="maquillaje">Maquillaje</option>
+                      <option value="suplementos_vitaminas">Suplementos y vitaminas</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="available">Disponible:</label>
+                    <input type="checkbox" id="available" formControlName="available">
+                  </div>
+                  <div class="form-group">
+                    <label for="isOnSale">En oferta:</label>
+                    <input type="checkbox" id="isOnSale" formControlName="isOnSale">
+                  </div>
+                  <div class="form-group">
+                    <label for="isFeatured">Destacado:</label>
+                    <input type="checkbox" id="isFeatured" formControlName="isFeatured">
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-3">Guardar cambios</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <app-pie-admi></app-pie-admi>
+</div> -->

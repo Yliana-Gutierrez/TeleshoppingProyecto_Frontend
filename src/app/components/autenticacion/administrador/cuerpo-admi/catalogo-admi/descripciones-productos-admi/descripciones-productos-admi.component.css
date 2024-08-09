@@ -1,0 +1,48 @@
+/* Fondo del contenedor principal */
+.form-container {
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+  }
+  
+  /* Estilos de los encabezados */
+  .form-container h1 {
+    font-size: 2rem;
+    color: #000000; /* Rosa pastel */
+    margin-bottom: 20px;
+  }
+  
+  
+  
+  .form-container .input-group-text {
+    background-color: #ffe4e1; /* Rosa muy claro */
+    color: #ff69b4; /* Rosa pastel */
+  }
+  
+  /* Estilos de los campos de entrada */
+  .form-container .form-control {
+    border-radius: 5px;
+    border: 1px solid #ff69b4; /* Rosa pastel */
+  }
+  
+  .form-container .form-control:focus {
+    border-color: #ff1493; /* Rosa más vivo */
+    box-shadow: 0 0 5px rgba(255, 20, 147, 0.5);
+  }
+  
+  /* Estilos de los mensajes de error */
+  .form-container .text-danger {
+    color: #ff4500; /* Rojo pastel */
+  }
+  
+  /* Estilos del botón */
+  .form-container .btn-primary {
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  }
+  
+  .form-container .btn-primary:hover {
+    background-color: #142bff; /* Rosa más vivo */
+    border-color: #142bff;
+  }
+  

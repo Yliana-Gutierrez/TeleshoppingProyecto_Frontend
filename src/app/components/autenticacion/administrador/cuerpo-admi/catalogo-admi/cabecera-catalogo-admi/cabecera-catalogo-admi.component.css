@@ -1,0 +1,68 @@
+/* Estilos del menu */
+.dropdown-submenu {
+    position: relative;
+  }
+  
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
+  .card-body button {
+    margin-right: 5px;
+  }
+
+
+ /* Estilos del menu */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.card-body button {
+  margin-right: 5px;
+}
+
+/* Estilos del navbar */
+.navbar-custom {
+  background: linear-gradient(to right, #9de0ad, #d4e157); /* Gradiente de colores verde pastel más vivo */
+  border-bottom: 2px solid #8bc34a; /* Borde inferior de color verde vivo */
+}
+
+/* Estilos de los enlaces del navbar */
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: #000000; /* Color de texto negro */
+  font-weight: bold; /* Texto en negrita */
+  font-size: 1.1rem; /* Tamaño de fuente */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Estilos para los enlaces al pasar el mouse */
+.navbar-custom .nav-link:hover,
+.navbar-custom .navbar-brand:hover {
+  color: #000000; /* Color de texto al pasar el mouse */
+}
+
+/* Estilos del dropdown menu */
+.navbar-custom .dropdown-menu {
+  background-color: #e8f5e9; /* Fondo del menú desplegable*/
+  border-radius: 10px; /* Bordes redondeados */
+  border: none; /* Sin borde */
+}
+
+/* Estilos para los elementos del dropdown */
+.navbar-custom .dropdown-item {
+  color: #000000; /* Color del texto */
+}
+
+/* Estilos para los elementos del dropdown al pasar el mouse */
+.navbar-custom .dropdown-item:hover {
+  background-color: #a5d6a7; /* Fondo al pasar el mouse */
+  color: #fff; /* Color del texto al pasar el mouse */
+}

@@ -1,0 +1,278 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+  <app-cabecera-admi></app-cabecera-admi>
+  <app-cabecera-catalogo-admi></app-cabecera-catalogo-admi>
+  <br>
+  
+  <!-- Buscador de productos -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Productos</h2>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Buscar producto por Nombre" [(ngModel)]="searchTerm" (ngModelChange)="filterProducts()">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="sortByPrice('asc')">Precio ascendente</button>
+            <button class="btn btn-outline-secondary" type="button" (click)="sortByPrice('desc')">Precio descendente</button>
+          </div>
+        </div>
+        <!-- Buscador por ID y Filtro por categoría en la misma línea -->
+      <div class="row mb-3">
+        <!-- Buscador por ID (izquierda) -->
+        <div class="col-md-6">
+          <div class="input-group">
+            <input type="number" class="form-control" placeholder="Buscar producto por ID" [(ngModel)]="searchId" (ngModelChange)="searchProductById()">
+            <!-- <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="searchProductById()">Buscar por ID</button>
+            </div> -->
+          </div>
+        </div>
+        
+        <!-- Filtro por categoría (derecha) -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <select class="form-control" id="category" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+              <option value="">Buscar producto por Categoria</option>
+              <option value="celulares">Celulares</option>
+              <option value="computadoras">Computadoras</option>
+              <option value="electrodomesticos">Electrodomesticos</option>
+              <option value="laptops">Laptops</option>
+              <option value="televisores">Televisores</option>
+              <option value="bolsos">Bolsos</option>
+              <option value="calzado">Calzado</option>
+              <option value="carteras">Carteras</option>
+              <option value="joyeria">Joyeria</option>
+              <option value="relojes">Relojes</option>
+              <option value="ropa_mujer">Ropa de mujer</option>
+              <option value="ropa_hombre">Ropa de hombre</option>
+              <option value="cuidado_piel_cabello">Cuidado de piel y cabello</option>
+              <option value="equipos_ejercicios">Equipos de ejercicios</option>
+              <option value="maquillaje">Maquillaje</option>
+              <option value="suplementos_vitaminas">Suplementos y vitaminas</option>
+            </select>
+          </div>
+        </div>
+      </div>
+        <div class="row row-cols-1 row-cols-md-5 g-4" *ngIf="filteredProductos.length > 0">
+          <div class="col" *ngFor="let product of filteredProductos">
+            <div class="card h-100">
+              <div class="card-img-top-container">
+                <img [src]="product.image" class="card-img-top" [alt]="product.title">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">Precio: {{ product.price | currency }}</p>
+                <br>
+                <br>
+                <div class="row row-cols-1 row-cols-md-5 g-1">
+                  <a class="nav-link active" href="/autenticacion/administrador/cuerpo/pedidos-admi">
+                    <button class="bi bi-cart-fill" (click)="addToCart(product)"></button>
+                  </a>
+                 
+                  <a class="nav-link active" (click)="viewDescription(product)">
+                    <button class="bi bi-eye"></button>
+                  </a>
+                  <a class="nav-link active" href="/autenticacion/administrador/cuerpo/catalogo-admi/Producto-favoritos-admi">
+                    <button class="bi bi-bookmark-heart" (click)="addToFavorites(product)"></button>
+                  </a>
+                </div>
+                <div *ngIf="recentlyAddedToFavorites === product && showFavoriteMessage" class="alert alert-success">
+                  Guardado en Favoritos
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="noResults">
+          <div class="col-md-12">
+            <p>No se encontraron productos que coincidan con la búsqueda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <br><br>
+  
+  <!-- Carrusel --><!-- ---------------------------------------------------------------------------------------- -->
+<br>
+<div class="container">
+  <div class="row">
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/586958/pexels-photo-586958.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/208052/pexels-photo-208052.jpeg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+  
+  <br>
+  
+  <!-- Tarjetas de los productos -->
+  <div class="container" style="overflow: hidden;">
+    <!-- Productos en oferta -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Productos en Oferta</h2>
+        <div class="row row-cols-1 row-cols-md-5 g-4">
+          <div class="col" *ngFor="let product of productsOnSale; let i = index">
+            <div class="card h-100">
+              <div class="card-img-top-container">
+                <img [src]="product.image" class="card-img-top" [alt]="product.title">
+                <!-- <div *ngIf="product.isEditing" class="image-upload">
+                  <input type="file" (change)="onFileSelected($event, i, false)">
+                </div> -->
+              </div>
+              <div class="card-body">
+                <h5 *ngIf="product.isEditing" class="image-url-input">
+                  <input type="text" [(ngModel)]="product.image" placeholder="Ingrese URL de la imagen" class="form-control form-control-sm">
+                </h5>
+                <h5 class="card-title">
+                  <span *ngIf="!product.isEditing">{{ product.title }}</span>
+                  <input *ngIf="product.isEditing" [(ngModel)]="product.title" class="form-control form-control-sm" />
+                </h5>
+                <p class="card-text">
+                  <span *ngIf="!product.isEditing">Precio: {{ product.price | currency }}</span>
+                  <input *ngIf="product.isEditing" [(ngModel)]="product.price" class="form-control form-control-sm" type="number" />
+                </p>
+                <br>
+                <br>
+                <div class="row row-cols-1 row-cols-md-5 g-1">
+                  <a class="nav-link active" href="/autenticacion/administrador/cuerpo/pedidos-admi">
+                    <button class="bi bi-cart-fill" (click)="addToCart(product)"></button>
+                  </a>
+                  <a class="nav-link active" (click)="viewDescription(product)">
+                    <button class="bi bi-eye"></button>
+                  </a>
+                  <a class="nav-link active" href="/autenticacion/administrador/cuerpo/catalogo-admi/Producto-favoritos-admi">
+                    <button class="bi bi-bookmark-heart" (click)="addToFavorites(product)"></button>
+                  </a>
+                  <a><button class="bi bi-trash" (click)="removeCard(i, true)"></button></a>
+                  <a><button class="bi bi-pencil" (click)="editCard(i, true)"></button></a>
+                  <a><button class="bi bi-floppy" *ngIf="product.isEditing" (click)="saveCard(i, true)"></button></a>
+                  <!-- <a><button class="bi bi-tag" (click)="addToOnSale(product.id!)"></button></a>
+                  <a><button class="bi bi-star" (click)="addToFatured(product.id!)"></button></a> -->
+                  <a><button class="bi bi-tag" (click)="removeFromOnSale(product)"></button></a>
+                  <!-- <a><button class="bi bi-star" (click)="removeFromFatured(product)"></button></a> -->
+                </div>
+                <div *ngIf="recentlyAddedToFavorites === product && showFavoriteMessage" class="alert alert-success">
+                  Guardado en Favoritos
+                </div>
+                <div *ngIf="recentlyAddedToFavorites === product && showFavoriteMessage" class="alert alert-success">
+                  Guardado en Favoritos
+                </div>
+                <div *ngIf="recentlyAddedToFavorites === product && showFavoriteMessage" class="alert alert-success">
+                  Guardado en Favoritos
+                </div>
+                <div *ngIf="saveMessages[product.id!]" class="alert alert-success">
+                  {{ saveMessages[product.id!] }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-success mt-3" (click)="addCard(true)">Agregar más Card en Oferta</button>
+      </div>
+    </div>
+    <br><br>
+    <!-- Productos destacados -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Productos Destacados</h2>
+        <br>
+        <div class="row row-cols-1 row-cols-md-5 g-4">
+          <div class="col" *ngFor="let product of featuredProducts; let i = index">
+            <div class="card h-100">
+              <div class="card-img-top-container">
+                <img [src]="product.image" class="card-img-top" [alt]="product.title">
+                <!-- <div *ngIf="product.isEditing" class="image-upload">
+                  <input type="file" (change)="onFileSelected($event, i, false)">
+                </div> -->
+              </div>
+              <div class="card-body">
+                <h5 *ngIf="product.isEditing" class="image-url-input">
+                  <input type="text" [(ngModel)]="product.image" placeholder="Ingrese URL de la imagen" class="form-control form-control-sm">
+                </h5>
+                <h5 class="card-title">
+                  <span *ngIf="!product.isEditing">{{ product.title }}</span>
+                  <input *ngIf="product.isEditing" [(ngModel)]="product.title" class="form-control form-control-sm" />
+                </h5>
+                <p class="card-text">
+                  <span *ngIf="!product.isEditing">Precio: {{ product.price | currency }}</span>
+                  <input *ngIf="product.isEditing" [(ngModel)]="product.price" class="form-control form-control-sm" type="number" />
+                </p>
+                <br>
+                <br>
+                <div class="row row-cols-1 row-cols-md-5 g-1">
+                  <a class="nav-link active" href="/autenticacion/administrador/cuerpo/pedidos-admi">
+                    <button class="bi bi-cart-fill" (click)="addToCart(product)"></button>
+                  </a>
+                  <a class="nav-link active" (click)="viewDescription(product)">
+                    <button class="bi bi-eye"></button>
+                  </a>
+                  <a class="nav-link active" href="/autenticacion/administrador/cuerpo/catalogo-admi/Producto-favoritos-admi">
+                    <button class="bi bi-bookmark-heart" (click)="addToFavorites(product)"></button>
+                  </a>
+                  <a><button class="bi bi-trash" (click)="removeCard(i, false)"></button></a>
+                  <a><button class="bi bi-pencil" (click)="editCard(i, false)"></button></a>
+                  <a><button class="bi bi-floppy" *ngIf="product.isEditing" (click)="saveCard(i, false)"></button></a>
+                  <a><button class="bi bi-star" (click)="removeFromFatured(product)"></button></a>
+                  
+                </div>
+                <div *ngIf="recentlyAddedToFavorites === product && showFavoriteMessage" class="alert alert-success">
+                  Guardado en Favoritos
+                </div>
+                <div *ngIf="recentlyAddedToFavorites === product && showFavoriteMessage" class="alert alert-success">
+                  Guardado en Favoritos
+                </div>
+                <div *ngIf="recentlyAddedToFavorites === product && showFavoriteMessage" class="alert alert-success">
+                  Guardado en Favoritos
+                </div>
+                <div *ngIf="saveMessages[product.id!]" class="alert alert-success">
+                  {{ saveMessages[product.id!] }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-success mt-3" (click)="addCard(false)">Agregar más Card Destacado</button>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  <app-pie-admi></app-pie-admi>
+  
+  </div>

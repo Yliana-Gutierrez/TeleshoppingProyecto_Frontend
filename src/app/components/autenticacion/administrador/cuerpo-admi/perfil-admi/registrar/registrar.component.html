@@ -1,0 +1,86 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+  
+    <app-cabecera-admi></app-cabecera-admi>
+    
+    
+      <br>
+      <br>
+    
+<div class="background-container">
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 form-container">
+      <h1 class="text-center">Registrar Administrador</h1>
+      <form [formGroup]="form" (ngSubmit)="RegistrarAdmi()" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario:</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+              <input type="text" id="usuario" class="form-control" formControlName="usuario" maxlength="10" minlength="10" required pattern="[0-9]+" placeholder="Ingrese su ci">
+            </div>
+            <div *ngIf="form.get('usuario')?.invalid && form.get('usuario')?.touched" class="text-danger">
+              CI es requerido.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña:</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+              <input type="password" id="password" class="form-control" [type]="mostrarPass ? 'text' : 'password'" formControlName="password" placeholder="Ingrese su contraseña">
+              <button type="button" class="btn btn-outline-secondary" (click)="mostrarContrasena()" aria-label="Mostrar/ocultar password">
+                <i *ngIf="!mostrarPass" class="bi bi-eye"></i>
+                <i *ngIf="mostrarPass" class="bi bi-eye-slash"></i>
+              </button>
+            </div>
+            <small class="form-text text-muted">
+              La clave debe tener como mínimo:
+              <ul>
+                <li>8 caracteres de longitud.</li>
+                <li>1 caracter en mayúscula.</li>
+                <li>2 caracteres en minúsculas.</li>
+                <li>2 números.</li>
+              </ul>
+            </small>
+            <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-danger">
+              <div *ngIf="form.get('password')?.errors?.['required']">Contraseña es requerida.</div>
+              <div *ngIf="form.get('password')?.errors?.['minlength']">Contraseña debe tener al menos 8 caracteres.</div>
+              <div *ngIf="form.get('password')?.errors?.['pattern']">Contraseña debe cumplir con los requisitos mínimos.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmarPassword" class="form-label">Confirmar Contraseña:</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+              <input type="password" id="confirmarPassword" class="form-control" formControlName="confirmarPassword" [type]="mostrarPass ? 'text' : 'password'" placeholder="Ingrese su confirmación de contraseña">
+              <button type="button" class="btn btn-outline-secondary" (click)="mostrarContrasena()" aria-label="Mostrar/ocultar confirmarPassword">
+                <i *ngIf="!mostrarPass" class="bi bi-eye"></i>
+                <i *ngIf="mostrarPass" class="bi bi-eye-slash"></i>
+              </button>
+            </div>
+            <div *ngIf="form.get('confirmarPassword')?.invalid && form.get('confirmarPassword')?.touched || (form.get('password')?.value !== form.get('confirmarPassword')?.value && form.get('confirmarPassword')?.touched)" class="text-danger">
+              Las contraseñas deben coincidir.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid || form.get('password')?.value !== form.get('confirmarPassword')?.value">Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  </div>
+  
+      
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+   
+    
+    <app-pie-admi></app-pie-admi>
+    

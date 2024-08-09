@@ -1,0 +1,80 @@
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/663/095/large_2x/shopping-concept-cartons-or-paper-boxes-and-shopping-bag-in-red-shopping-cart-on-pink-background-online-shopping-consumers-can-shop-from-home-and-delivery-service-with-copy-space-free-photo.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+<app-cabecera></app-cabecera>
+<br>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 form-container">
+      <h1 class="text-center">Actualizar Contraseña</h1>
+      <br>
+      <form [formGroup]="form" (ngSubmit)="ActualizarContrasena()" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="contrasenaActual" class="form-label">Contraseña Actual:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+            <input type="password" id="contrasenaActual" class="form-control" formControlName="contrasenaActual" [type]="mostrarPass ? 'text' : 'password'"   placeholder="Ingrese su contraseña actual">
+            <button type="button" class="btn btn-outline-secondary" (click)="mostrarContrasena()" aria-label="Mostrar/ocultar contrasenaActual">
+              <i *ngIf="!mostrarPass" class="bi bi-eye"></i>
+              <i *ngIf="mostrarPass" class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+          <div *ngIf="form.get('contrasenaActual')?.invalid && form.get('contrasenaActual')?.touched" class="text-danger">
+            Contraseña actual es requerida.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="nuevaContrasena" class="form-label">Nueva Contraseña:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-shield-lock-fill"></i></span>
+            <input type="password" id="nuevaContrasena" class="form-control" [type]="mostrarPass ? 'text' : 'password'" formControlName="nuevaContrasena" placeholder="Ingrese su nueva contraseña">
+            <button type="button" class="btn btn-outline-secondary" (click)="mostrarContrasena()" aria-label="Mostrar/ocultar nuevaContrasena">
+              <i *ngIf="!mostrarPass" class="bi bi-eye"></i>
+              <i *ngIf="mostrarPass" class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+          <small class="form-text text-muted">
+            La clave debe tener como mínimo:
+            <ul>
+              <li>8 caracteres de longitud.</li>
+              <li>1 caracter en mayúscula.</li>
+              <li>2 caracteres en minúsculas.</li>
+              <li>2 números.</li>
+            </ul>
+          </small>
+          <div *ngIf="form.get('nuevaContrasena')?.invalid && form.get('nuevaContrasena')?.touched" class="text-danger">
+            <div *ngIf="form.get('nuevaContrasena')?.errors?.['required']">Nueva contraseña es requerida.</div>
+            <div *ngIf="form.get('nuevaContrasena')?.errors?.['minlength']">Nueva contraseña debe tener al menos 8 caracteres.</div>
+            <div *ngIf="form.get('nuevaContrasena')?.errors?.['pattern']">
+              Nueva contraseña debe cumplir con los requisitos mínimos.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="confirmarContrasena" class="form-label">Confirmar Nueva Contraseña:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+            <input type="password" id="confirmarContrasena" class="form-control" formControlName="confirmarContrasena" [type]="mostrarPass ? 'text' : 'password'" placeholder="Confirme su nueva contraseña">
+            <button type="button" class="btn btn-outline-secondary" (click)="mostrarContrasena()" aria-label="Mostrar/ocultar confirmarContrasena">
+              <i *ngIf="!mostrarPass" class="bi bi-eye"></i>
+              <i *ngIf="mostrarPass" class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+          <div *ngIf="form.get('confirmarContrasena')?.invalid && form.get('confirmarContrasena')?.touched || (form.get('nuevaContrasena')?.value !== form.get('confirmarContrasena')?.value && form.get('confirmarContrasena')?.touched)" class="text-danger">
+            Las contraseñas no coinciden.
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid || form.get('nuevaContrasena')?.value !== form.get('confirmarContrasena')?.value">Actualizar</button>
+      </form>
+      <div *ngIf="mensaje" class="alert alert-info mt-3">{{ mensaje }}</div>
+    </div>
+  </div>
+</div>
+
+
+
+<br><br><br>
+
+<app-pie></app-pie>

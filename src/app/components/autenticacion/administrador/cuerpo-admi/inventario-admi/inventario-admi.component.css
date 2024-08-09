@@ -1,0 +1,66 @@
+span[title="Editar"] {
+    cursor: pointer;
+}
+
+span[title="Eliminar"] {
+    cursor: pointer;
+}
+
+.pagination .page-link {
+    cursor: pointer;
+}
+
+.custom-header {
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .custom-search .form-control {
+    border: 2px solid #343a40;
+    border-radius: 5px;
+  }
+  
+  .custom-search .btn {
+    background-color: #8ab0fa;
+    color: #ffffff;
+    border: 2px solid #4c535a;
+  }
+  
+  .custom-table thead {
+    background-color: #87c0f9;
+    color: #ffffff;
+  }
+  
+  .custom-table tbody tr:hover {
+    background-color: #99c3ed;
+  }
+  
+  .custom-table tbody tr {
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-pagination .page-item a.page-link {
+    color: #343a40;
+  }
+  
+  .custom-pagination .page-item.active a.page-link {
+    background-color: #8ab0fa;
+    border-color: #343a40;
+    color: #bdec57;
+  }
+  
+  .custom-pagination .page-item.disabled a.page-link {
+    color: #6c757d;
+  }
+
+   /* Estilos del botón */
+   .form-container .btn-primary {
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.form-container .btn-primary:hover,
+.btn-agregar:hover {
+    background-color: #ff1493; /* Rosa más vivo */
+    border-color: #ff1493;
+}
